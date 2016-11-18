@@ -15,7 +15,12 @@ public class Codility01 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new lesson7().runNesting();
+        long startTime = System.nanoTime();
+        new lesson8().runEquiLeader();
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime);
+        System.out.println("Function Execution Time="+duration);
     }
-    
+
 }
