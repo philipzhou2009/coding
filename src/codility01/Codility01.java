@@ -16,7 +16,11 @@ public class Codility01 {
      */
     public static void main(String[] args) {
         long startTime = System.nanoTime();
-        new lesson8().runEquiLeader();
+        
+        //new lesson8().runEquiLeader();
+        //new lesson9().runMaxSliceSum();
+        new lesson9().runMaxDoubleSliceSum();
+        
         long endTime = System.nanoTime();
 
         long duration = (endTime - startTime);
