@@ -31,13 +31,47 @@ const quickSort = (arr, l, r) => {
             arr[i] = right
         }
         else {
-            
+
         }
 
     }
 
 }
 
+const palindrome = (str) => {
+    console.log(str)
+    let length = str.length
+
+    if (length === 0 || length === 1) {
+        return true
+    }
+
+    let left = str[0], right = str[length - 1]
+
+    if (left !== right) {
+        return false
+    }
+
+    else {
+        return palindrome(str.slice(1, length - 1))
+    }
+
+}
+
+function getMaxProfit(arr) {
+    console.log(arr)
+
+    let min = 0, max = 0
+    arr.forEach((elem, index) => {
+        min = elem < min ? elem : min
+        max = elem > max ? elem : max
+    })
+
+    return max - min
+}
+
 module.exports = {
-    quickSort
+    quickSort,
+    palindrome,
+    getMaxProfit
 }
