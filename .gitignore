@@ -79,3 +79,4 @@ typings/
 
 # build 
 dist
+/java/build/
