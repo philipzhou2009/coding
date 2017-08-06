@@ -6,6 +6,7 @@
 package DSA;
 
 import DSA.algorithm.Sorting;
+import DSA.algorithm.Sorting.SortingAlgo;
 import java.util.Arrays;
 
 /**
@@ -18,20 +19,21 @@ public class JavaApplication {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        int i = 0;
-        int[] sortingArr = {20, 0, 19, 9, 18, 8, 12, 2};
+                
+        SortingAlgo sa = SortingAlgo.INSERTION;  
+        Sorting.sortingFactory(sa);
         
-        switch (i) {
-            case 0:
-                int[] result = Sorting.bubbleSort(sortingArr);
-                System.out.println(Arrays.toString(result));
-                break;
-
-            default:
-                System.out.println("no feature selected");
-                break;
-        }
+//        switch (i) {
+//            case 0:
+////                int[] result = Sorting.bubbleSort();
+////                System.out.println(Arrays.toString(result));
+//                Sorting.sortingFactory();
+//                break;
+//
+//            default:
+//                System.out.println("no feature selected");
+//                break;
+//        }
     }
 
 }
