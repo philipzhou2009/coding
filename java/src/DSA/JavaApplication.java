@@ -20,7 +20,7 @@ public class JavaApplication {
      */
     public static void main(String[] args) {
                 
-        SortingAlgo sa = SortingAlgo.MERGE;  
+        SortingAlgo sa = SortingAlgo.SHELL;  
         Sorting.sortingFactory(sa);
         
 //        switch (i) {

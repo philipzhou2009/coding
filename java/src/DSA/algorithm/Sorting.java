@@ -6,13 +6,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Sorting {
 
     public enum SortingAlgo {
-        BUBBLE, INSERTION, SELECTION, MERGE, QUICK
+        BUBBLE, INSERTION, SELECTION, MERGE, SHELL,QUICK
     };
 
     static int[] A = {20, 0, 19, 9, 18, 8, 12, 2};
 
     public static void sortingFactory(SortingAlgo sa) {
-        int length = 10;
+        int length = 15;
         int[] A = new int[length];
         int min = 1, max = 100;
 
@@ -37,6 +37,9 @@ public class Sorting {
             case MERGE:
                 result = mergeSort(A);
                 break;
+            case SHELL:
+                result = shellSort(A);    
+                break;
             default:
                 result = new int[1];
                 System.out.println("No algo selected");
@@ -46,6 +49,26 @@ public class Sorting {
         System.out.printf(format, "After Sorting:", Arrays.toString(result));
     }
 
+    // average and worst case complexity are of Ο(n)
+    static int[] shellSort(int[] A) {
+        int length = A.length;
+        
+        int interval = 1;
+        while(interval < length/3)
+        {
+            interval = interval*3+1;
+        }
+        
+        // 13->4->1
+        while(interval > 0)
+        {
+            for(int i = 0; i< interval; i++)
+            {
+                
+            }
+        }
+    }
+    
     // O(n log n)
     public static int[] mergeSort(int[] A) {
         int length = A.length;
