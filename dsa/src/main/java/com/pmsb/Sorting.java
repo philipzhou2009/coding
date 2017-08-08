@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Sorting {
+
     public enum SortingAlgo {
         BUBBLE, INSERTION, SELECTION, MERGE, SHELL, QUICK
     };
@@ -63,6 +64,17 @@ public class Sorting {
         } else {
             System.out.printf(format, "Sorting Failed", new int[0]);
         }
+    }
+
+    static int[] randomArrayGenerator(int length) {
+        int[] A = new int[length];
+        int min = 1, max = 1000;
+
+        for (int i = 0; i < length; i++) {
+            A[i] = ThreadLocalRandom.current().nextInt(min, max + 1);
+        }
+        
+        return A;
     }
 
 //     quite efficient for large-sized data sets as its average and worst case complexity are of Ο(n2),
