@@ -25,7 +25,7 @@ public class SortingTest {
         int length = 33;
         int[] A = Sorting.randomArrayGenerator(length);
 
-        System.out.println(Arrays.toString(A));
+//        System.out.println(Arrays.toString(A));
         assertNotNull("Array null", A);
         assertEquals("Array length", length, A.length);
 
