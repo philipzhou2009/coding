@@ -14,29 +14,48 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Codility {
 
     public enum lessons {
-        CL1, CL21, CL22
+        CL1, CL21, CL22, CL31, CL32, CL33, CL41, CL42, CL43, CL44,
     };
 
     public static void lessonFactory(lessons lesson) {
 
-        boolean condition = false;
-        int iNumber =15; //ranNumber();
+        boolean condition = true;
+        int iNumber = 15; //ranNumber();
 //        int result = 0;
-        
+
         switch (lesson) {
             case CL1:
                 Lesson1.solution(iNumber);
-                condition = true;
                 break;
             case CL21:
                 Lesson2.CyclicRotation();
-                condition = true;
                 break;
             case CL22:
                 Lesson2.OddOccurrencesInArray();
-                condition = true;
-                break;                
+                break;
+            case CL31:
+                Lesson3.PermMissingElem();
+                break;
+            case CL32:
+                Lesson3.FrogJmp();
+                break;
+            case CL33:
+                Lesson3.TapeEquilibrium();
+                break;
+            case CL41:
+                Lesson4.MissingInteger();
+                break;
+            case CL42:
+                Lesson4.PermCheck();
+                break;
+            case CL43:
+                Lesson4.FrogRiverOne();
+                break;
+            case CL44:
+                Lesson4.MaxCounters();
+                break;            
             default:
+                condition = false;
                 break;
         }
 
