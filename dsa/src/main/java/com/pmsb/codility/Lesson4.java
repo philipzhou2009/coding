@@ -153,15 +153,39 @@ public class Lesson4 {
 
     public static void MaxCounters() {
         int[] A = {3, 4, 4, 6, 1, 4, 4};
-        
         int N = 5;
-        
+
         int[] result = MaxCountersSolution(N, A);
-        
-        System.out.println("MaxCounters, result="+ Arrays.toString(result));
+        System.out.println("MaxCounters, result=" + Arrays.toString(result));
     }
 
+    // large_random2 
+//large random test, 10000 max_counter operations ✘TIMEOUT ERROR 
+//running time: 3.67 sec., time limit: 2.25 sec.
     private static int[] MaxCountersSolution(int N, int[] A) {
+        int[] B = new int[N];
+        int length = A.length;
+        int[] mx = new int[length];
+
+        int val = 0, max = 0;
+        for (int i = 0; i < length; i++) {
+//            max = 0;
+            val = A[i];
+
+            if (val == N + 1) {
+                for (int j = 0; j < N; j++) {
+                    B[j] = max;
+                }
+            } else if (val <= N) {
+                B[val - 1] += 1;
+
+                max = B[val - 1] > max ? B[val - 1] : max;
+            }
+
+//            System.out.println("MaxCountersSolution, B=" + Arrays.toString(B));
+        }
+
+        return B;
 
     }
 }
