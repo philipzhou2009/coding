@@ -6,6 +6,9 @@
 package com.pmsb.codility;
 
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
+
+import com.pmsb.Utils;
 
 /**
  *
@@ -152,11 +155,30 @@ public class Lesson4 {
     }
 
     public static void MaxCounters() {
-        int[] A = {3, 4, 4, 6, 1, 4, 4, 6};
-        int N = 6;
+//        int[] A = {3, 4, 4, 6, 1, 4, 4};
+        int N = 5, size = 30;
+        int[] A = MaxCountersGenerator(N, size);
+        System.out.printf("MaxCounters, N=%d, A=%s\n", N, Arrays.toString(A));
 
-        int[] result = MaxCountersSolution(N, A);
+        int[] result;
+
+        Utils.timerStart();
+        result = MaxCountersSolution(N, A);
+        System.out.println("MaxCounters, result0=" + Arrays.toString(result));
+        Utils.timerOutput();
+
+        result = MaxCountersSolution0(N, A);
         System.out.println("MaxCounters, result=" + Arrays.toString(result));
+        Utils.timerOutput();
+    }
+
+    private static int[] MaxCountersGenerator(int N, int num) {
+        int[] array = new int[num];
+        for (int i = 0; i < num; i++) {
+            array[i] = ThreadLocalRandom.current().nextInt(1, N + 2);
+        }
+
+        return array;
     }
 
     // large_random2 
@@ -165,11 +187,10 @@ public class Lesson4 {
     private static int[] MaxCountersSolution0(int N, int[] A) {
         int[] B = new int[N];
         int length = A.length;
-        int[] mx = new int[length];
+//        int[] mx = new int[length];
 
         int val = 0, max = 0;
         for (int i = 0; i < length; i++) {
-//            max = 0;
             val = A[i];
 
             if (val == N + 1) {
@@ -191,37 +212,44 @@ public class Lesson4 {
 
     private static int[] MaxCountersSolution(int N, int[] A) {
         int[] B = new int[N];
+        int[] C = new int[N];
         int length = A.length;
 
         int val = 0, max = 0;
-        int lastReset = -1, lastMax = 0;
+        int lastReset = -1, lastMax = 0, tmp = 0;
 
         for (int i = 0; i < length; i++) {
             val = A[i];
 
             if (val == N + 1) {
+//                for (int j = 0; j < N; j++) {
+////                    max = C[j] > max ? C[j] : max;
+//                    C[j] = 0;
+//                }
+
+//                C = new int[N];
+                lastMax += max;
                 lastReset = i;
-                lastMax = max;
+                max = 0;
+
             } else if (val <= N) {
-                B[val - 1] += 1;
-                max = B[val - 1] > max ? B[val - 1] : max;
+                tmp = val - 1;
+                C[tmp] += 1;
+//                max = C[tmp] > max ? C[tmp] : max;
             }
 
-//            System.out.println("MaxCountersSolution, B=" + Arrays.toString(B));
+//            System.out.println("MaxCountersSolution, max=" + max);
         }
-        System.out.printf("MaxCountersSolution, lastReset=%d, lastMax=%d\n", lastReset, lastMax);
+//        System.out.printf("MaxCountersSolution, lastReset=%d, lastMax=%d\n", lastReset, lastMax);
 
-        if (lastReset != -1) {
-            for (int j = 0; j < N; j++) {
-                B[j] = lastMax;
-            }
-
-            for (int k = lastReset + 1; k < length; k++) {
-                val = A[k];
-                B[val - 1] += 1;
-            }
-
-        }
+//        for (int j = 0; j < N; j++) {
+//            B[j] = lastMax;
+//        }
+//
+//        for (int k = lastReset + 1; k < length; k++) {
+//            val = A[k];
+//            B[val - 1] += 1;
+//        }
 
         return B;
     }
