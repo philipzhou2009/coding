@@ -163,12 +163,12 @@ public class Lesson4 {
         int[] result;
 
         Utils.timerStart();
-        result = MaxCountersSolution(N, A);
-        System.out.println("MaxCounters, result0=" + Arrays.toString(result));
+        result = MaxCountersSolution0(N, A);
+//        System.out.println("MaxCounters, result0=" + Arrays.toString(result));
         Utils.timerOutput();
 
-        result = MaxCountersSolution0(N, A);
-        System.out.println("MaxCounters, result=" + Arrays.toString(result));
+        result = MaxCountersSolution(N, A);
+//        System.out.println("MaxCounters, result=" + Arrays.toString(result));
         Utils.timerOutput();
     }
 
