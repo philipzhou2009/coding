@@ -15,6 +15,7 @@ public class Codility {
 
     public enum lessons {
         CL1, CL21, CL22, CL31, CL32, CL33, CL41, CL42, CL43, CL44,
+        CL51, CL52, CL53, CL54
     };
 
     public static void lessonFactory(lessons lesson) {
@@ -53,7 +54,16 @@ public class Codility {
                 break;
             case CL44:
                 Lesson4.MaxCounters();
-                break;            
+                break;
+            case CL51:
+                Lesson5.PassingCars();
+                break;
+            case CL52:
+                Lesson5.CountDiv();
+                break;
+            case CL53:
+                Lesson5.MinAvgTwoSlice();
+                break;
             default:
                 condition = false;
                 break;

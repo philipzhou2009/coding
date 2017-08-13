@@ -6,6 +6,8 @@
 package com.pmsb;
 
 import com.google.common.base.Stopwatch;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  *
  * @author philip
@@ -22,9 +24,18 @@ public class Utils {
 
     public static void timerOutput() {
         stopTime = System.nanoTime();
-        System.out.printf("Running Time=%d, start=%d, stop=%d\n", 
+        System.out.printf("Running Time=%d, start=%d, stop=%d\n",
                 stopTime - startTime, startTime, stopTime);
         startTime = stopTime;
+    }
+
+    public static int[] ArrayGenerator(int length, int min, int max) {
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = ThreadLocalRandom.current().nextInt(min, max + 1);
+        }
+
+        return array;
     }
 
 }

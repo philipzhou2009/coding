@@ -156,7 +156,7 @@ public class Lesson4 {
 
     public static void MaxCounters() {
 //        int[] A = {3, 4, 4, 6, 1, 4, 4};
-        int N = 5, size = 30;
+        int N = 5, size = 1;
         int[] A = MaxCountersGenerator(N, size);
         System.out.printf("MaxCounters, N=%d, A=%s\n", N, Arrays.toString(A));
 
@@ -164,12 +164,18 @@ public class Lesson4 {
 
         Utils.timerStart();
         result = MaxCountersSolution0(N, A);
-//        System.out.println("MaxCounters, result0=" + Arrays.toString(result));
         Utils.timerOutput();
+        System.out.println("MaxCounters, result0=" + Arrays.toString(result));
 
+        Utils.timerStart();
+
+//        long startTime = System.nanoTime();
         result = MaxCountersSolution(N, A);
-//        System.out.println("MaxCounters, result=" + Arrays.toString(result));
+//        long endTime = System.nanoTime();
+//        System.out.printf("MaxCounters, duration=%d, start=%d, endTime=%d\n",
+//                (endTime - startTime), startTime, endTime);
         Utils.timerOutput();
+        System.out.println("MaxCounters, result=" + Arrays.toString(result));
     }
 
     private static int[] MaxCountersGenerator(int N, int num) {
@@ -187,7 +193,6 @@ public class Lesson4 {
     private static int[] MaxCountersSolution0(int N, int[] A) {
         int[] B = new int[N];
         int length = A.length;
-//        int[] mx = new int[length];
 
         int val = 0, max = 0;
         for (int i = 0; i < length; i++) {
@@ -197,6 +202,8 @@ public class Lesson4 {
                 for (int j = 0; j < N; j++) {
                     B[j] = max;
                 }
+
+//                bytefill(B, max);
             } else if (val <= N) {
                 B[val - 1] += 1;
 
@@ -210,6 +217,8 @@ public class Lesson4 {
 
     }
 
+//     extreme_large all max_counter operations ✘ TIMEOUT ERROR
+//running time: 6.41 sec., time limit: 5.20 sec. 
     private static int[] MaxCountersSolution(int N, int[] A) {
         int[] B = new int[N];
         int[] C = new int[N];
@@ -223,11 +232,10 @@ public class Lesson4 {
 
             if (val == N + 1) {
 //                for (int j = 0; j < N; j++) {
-////                    max = C[j] > max ? C[j] : max;
 //                    C[j] = 0;
 //                }
+                C = new int[N];
 
-//                C = new int[N];
                 lastMax += max;
                 lastReset = i;
                 max = 0;
@@ -235,23 +243,37 @@ public class Lesson4 {
             } else if (val <= N) {
                 tmp = val - 1;
                 C[tmp] += 1;
-//                max = C[tmp] > max ? C[tmp] : max;
+                max = C[tmp] > max ? C[tmp] : max;
             }
 
 //            System.out.println("MaxCountersSolution, max=" + max);
         }
 //        System.out.printf("MaxCountersSolution, lastReset=%d, lastMax=%d\n", lastReset, lastMax);
 
-//        for (int j = 0; j < N; j++) {
-//            B[j] = lastMax;
-//        }
-//
-//        for (int k = lastReset + 1; k < length; k++) {
-//            val = A[k];
-//            B[val - 1] += 1;
-//        }
+        for (int j = 0; j < N; j++) {
+            B[j] = lastMax;
+        }
 
+        for (int k = lastReset + 1; k < length; k++) {
+            val = A[k];
+            B[val - 1] += 1;
+        }
         return B;
     }
 
+    /*
+ * initialize a smaller piece of the array and use the System.arraycopy 
+ * call to fill in the rest of the array in an expanding binary fashion
+     */
+    public static void bytefill(byte[] array, byte value) {
+        int len = array.length;
+
+        if (len > 0) {
+            array[0] = value;
+        }
+
+        for (int i = 1; i < len; i += i) {
+            System.arraycopy(array, 0, array, i, ((len - i) < i) ? (len - i) : i);
+        }
+    }
 }
