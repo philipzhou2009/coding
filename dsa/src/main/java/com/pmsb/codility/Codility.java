@@ -15,7 +15,7 @@ public class Codility {
 
     public enum lessons {
         CL1, CL21, CL22, CL31, CL32, CL33, CL41, CL42, CL43, CL44,
-        CL51, CL52, CL53, CL54
+        CL51, CL52, CL53, CL54, CL61, CL62, CL63, CL64
     };
 
     public static void lessonFactory(lessons lesson) {
@@ -64,6 +64,22 @@ public class Codility {
             case CL53:
                 Lesson5.MinAvgTwoSlice();
                 break;
+            case CL54:
+                Lesson5.GenomicRangeQuery();
+                break;
+            case CL61:
+                Lesson6.Distinct();
+                break;
+            case CL62:
+                Lesson6.MaxProductOfThree();
+                break;
+            case CL63:
+                Lesson6.Triangle();
+                break;
+            case CL64:
+                Lesson6.NumberOfDiscIntersections();
+                break;                
+
             default:
                 condition = false;
                 break;
