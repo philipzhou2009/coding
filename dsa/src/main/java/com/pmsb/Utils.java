@@ -39,4 +39,9 @@ public class Utils {
         return array;
     }
 
+    public static void OutputResult(String name, int result) {
+        System.out.printf("%s, result=%d\n", name, result);
+
+    }
+
 }

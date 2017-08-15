@@ -25,7 +25,7 @@ public class App {
                 Sorting.sortingFactory(sa);
                 break;
             case Codility:
-                lessons lesson = lessons.CL63;
+                lessons lesson = lessons.CL64;
                 Codility.lessonFactory(lesson);
                 break;
 
