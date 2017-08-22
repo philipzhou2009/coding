@@ -41,7 +41,14 @@ public class Utils {
 
     public static void OutputResult(String name, int result) {
         System.out.printf("%s, result=%d\n", name, result);
+    }
 
+    public static void OutputResult(String name, boolean result) {
+        System.out.printf("%s, result=%b\n", name, result);
+    }
+
+    public static void OutputResult(String name, int[] result) {
+        System.out.printf("%s, result=%s\n", name, Arrays.toString(result));
     }
 
 }
