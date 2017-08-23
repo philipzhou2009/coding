@@ -30,7 +30,7 @@ public class App {
                 Codility.lessonFactory(lesson);
                 break;
             case Testdome:
-                Question q = Question.TwoSum;
+                Question q = Question.SortedSearch;
                 Testdome.QFactory(q);
             default:
                 break;

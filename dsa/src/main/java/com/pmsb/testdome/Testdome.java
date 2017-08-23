@@ -14,7 +14,7 @@ import com.pmsb.Utils;
 public class Testdome {
 
     public enum Question {
-        Palindrome, UserInput, BinarySearchTree, TwoSum
+        Palindrome, UserInput, BinarySearchTree, TwoSum, Folders, SortedSearch,
     }
 
     public static void QFactory(Question q) {
@@ -36,6 +36,13 @@ public class Testdome {
             case TwoSum:
                 findTwoSum();
                 break;
+            case Folders:
+                Folders.run();
+                break;
+            case SortedSearch:
+                countNumbers();
+                break;
+
         }
 
     }
@@ -122,5 +129,57 @@ public class Testdome {
         }
 
         return null;
+    }
+
+    public static void countNumbers() {
+        int[] A = {1, 2, 3, 5, 7, 9, 11, 12, 13};
+        int lessThan = 4;
+        int result = countNumbersSolution(A, lessThan);
+
+        Utils.OutputResult("countNumbers", result);
+    }
+
+    public static int countNumbersSolution0(int[] sortedArray, int lessThan) {
+
+        int[] A = sortedArray;
+        int length = sortedArray.length;
+        int result = 0, val, idx, leftCount, len = length;
+        /*
+        for (int i = 0; i < length; i++) {
+            value = sortedArray[i];
+            if (value < lessThan) {
+                result++;
+            } else {
+                break;
+            }
+        }*/
+
+        return result;
+    }
+
+    public static int countNumbersSolution(int[] sortedArray, int lessThan) {
+
+        int length = sortedArray.length;
+        int result = countNumbersSolutionRecur(sortedArray, 0, length - 1, lessThan);
+
+        return result;
+    }
+
+    private static int countNumbersSolutionRecur(int[] A, int left, int right, int lessThan) {
+
+        int length = right - left;
+
+        if (length == 0) {
+            return (A[left] < lessThan) ? 1 : 0;
+        }
+
+        int mIdx = (left + right) / 2;
+        int mid = A[mIdx];
+        if (mid < lessThan) {
+            return mIdx + 1 - left + countNumbersSolutionRecur(A, mIdx + 1, right, lessThan);
+        } else {
+            return countNumbersSolutionRecur(A, left, mIdx, lessThan);
+        }
+
     }
 }

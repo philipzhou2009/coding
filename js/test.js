@@ -89,6 +89,17 @@ function xxx(nn) {
 
 xxx(33)
 
-console.log(1 + 2)
+console.log(1 + 0.2)
 console.log(0.1 + 0.2)
 console.log(0.1 + 0.2 == 0.3)
+
+// not working in strict mode
+function func() {
+   return arguments.callee; 
+}
+
+const func1 = () => {
+       return arguments.callee; 
+
+}
+// console.log(func(), func1())
