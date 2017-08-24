@@ -15,6 +15,7 @@ public class Testdome {
 
     public enum Question {
         Palindrome, UserInput, BinarySearchTree, TwoSum, Folders, SortedSearch,
+        TrainComposition
     }
 
     public static void QFactory(Question q) {
@@ -42,7 +43,9 @@ public class Testdome {
             case SortedSearch:
                 countNumbers();
                 break;
-
+            case TrainComposition:
+                Questions.TrainComposition();
+                break;
         }
 
     }
