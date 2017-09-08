@@ -1,4 +1,4 @@
-appendChildren()
+// appendChildren()
 // registerHandlers()
 // registerClickHandler()
 // console.log(formatDate("12/31/2014"));
