@@ -1,15 +1,15 @@
 // https://leetcode.com/problems/maximum-number-of-non-overlapping-substrings/
-
-const { cadetblue } = require("color-name");
-const { count } = require("console");
-
 /**
  * @param {string} s
  * @return {string[]}
  */
 var maxNumOfSubstrings = function (s) {
+  if (s === "") {
+    return [""];
+  }
+
   let chars = s.split("");
-  console.log(chars);
+  //   console.log(chars);
 
   let charPositionsMap = new Map();
 
@@ -35,11 +35,10 @@ var maxNumOfSubstrings = function (s) {
   const candidates = [];
   let minLength = 0;
   let maxCount = 0;
-  const idx = 0;
   let selectedOnes = undefined;
 
   charPositionsMap.forEach((value, key) => {
-    console.log("for key=", key);
+    // console.log("for key=", key);
     const targetMin = value[0];
     const targetMax = value[1];
 
@@ -55,7 +54,7 @@ var maxNumOfSubstrings = function (s) {
 
     if (ok === true) {
       const subString = s.substring(targetMin, targetMax + 1);
-      //   console.log("found substring=", subString);
+      console.log("found substring=", subString);
       let inserted = false;
 
       for (let candidate of candidates) {
@@ -69,14 +68,7 @@ var maxNumOfSubstrings = function (s) {
 
           if (candidate.count > maxCount) {
             maxCount = candidate.count;
-            // selectedOnes = candidate.subStrings;
           }
-          //   if (candidate.count === maxCount) {
-          //     if (minLength === 0 || candidate.length < minLength) {
-          //       minLength = candidate.length;
-          //       selectedOnes = candidate.subStrings;
-          //     }
-          //   }
         }
       }
       if (inserted === false) {
@@ -91,19 +83,11 @@ var maxNumOfSubstrings = function (s) {
 
         if (candidate.count > maxCount) {
           maxCount = candidate.count;
-          //   selectedOnes = candidate.subStrings;
         }
-        // if (candidate.count === maxCount) {
-        //   if (minLength === 0 || candidate.length < minLength) {
-        //     minLength = candidate.length;
-        //     selectedOnes = candidate.subStrings;
-        //   }
-        // }
       }
     }
 
     console.log("maxCount", maxCount);
-    // console.log("minLength", minLength);
   });
 
   console.log("candidates", JSON.stringify(candidates));
@@ -122,30 +106,11 @@ var maxNumOfSubstrings = function (s) {
 
   console.log("selectedOnes", selectedOnes);
 
+  if (selectedOnes === undefined) {
+    return [s];
+  }
+
   return selectedOnes;
 };
-
-// const findSubStrings = (char, theMap, allChars, s) => {
-//   const element = theMap.get(char); // [0, 7]
-//   const targetMin = element[0];
-//   const targetMax = element[1];
-
-//   let ok = true;
-//   for (let j = targetMin + 1; j < targetMax; j++) {
-//     const nextChar = allChars[j]; // d
-//     const nextPositions = theMap.get(nextChar); // [ 1, 6 ]
-//     if (targetMin > nextPositions[0] || targetMax < nextPositions[1]) {
-//       ok = false;
-//       break;
-//     }
-//   }
-
-//   if (ok === true) {
-//     console.log("found substring=", s.substring(targetMin, targetMax + 1));
-//     if (targetMax < allChars.length - 1) {
-//       findSubStrings(allChars[targetMax + 1], theMap, allChars, s);
-//     }
-//   }
-// };
 
 module.exports = maxNumOfSubstrings;
