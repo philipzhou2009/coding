@@ -1,4 +1,4 @@
-const maxNumOfSubstrings1 = require("../main/1520-2");
+const maxNumOfSubstrings1 = require("../main/1520-3");
 
 describe("1520 testing...", () => {
   test("case 1 ", () => {
@@ -8,7 +8,7 @@ describe("1520 testing...", () => {
     expect(actual).toContain("ccc");
   });
 
-  test("case 2 ", () => {
+  test.only("case 2 ", () => {
     const actual = maxNumOfSubstrings1("abbaccd");
     expect(actual).toContain("d");
     expect(actual).toContain("bb");
@@ -40,6 +40,7 @@ describe("1520 testing...", () => {
     let actual = maxNumOfSubstrings1("cabcccbaa");
     expect(actual).toEqual(["cabcccbaa"]);
   });
+
   test("case 8", () => {
     let actual = maxNumOfSubstrings1("bbeadcxede");
     expect(actual).toContain("a");
@@ -51,8 +52,8 @@ describe("1520 testing...", () => {
   test("case 9", () => {
     console.time("case9");
     let actual = maxNumOfSubstrings1(longStr);
-    expect(actual).toEqual(["cabcccbaa"]);
     console.timeEnd("case9");
+    expect(actual).toEqual(["cabcccbaa"]);
   });
 });
 
