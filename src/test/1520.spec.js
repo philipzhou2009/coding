@@ -1,6 +1,6 @@
 const maxNumOfSubstrings1 = require("../main/1520-3");
 
-describe("1520 testing...", () => {
+describe.skip("1520 testing...", () => {
   test("case 1 ", () => {
     const actual = maxNumOfSubstrings1("adefaddaccc");
     expect(actual).toContain("e");
@@ -8,7 +8,7 @@ describe("1520 testing...", () => {
     expect(actual).toContain("ccc");
   });
 
-  test.only("case 2 ", () => {
+  test("case 2 ", () => {
     const actual = maxNumOfSubstrings1("abbaccd");
     expect(actual).toContain("d");
     expect(actual).toContain("bb");
