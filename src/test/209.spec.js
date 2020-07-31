@@ -1,6 +1,6 @@
 const minSubArrayLen = require("../main/209-0");
 
-describe("209 testing...", () => {
+describe.skip("209 testing...", () => {
   test("case 1", () => {
     const actual = minSubArrayLen(7, [2, 3, 1, 2, 4, 3]);
     expect(actual).toEqual(2);
