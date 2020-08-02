@@ -12,13 +12,16 @@ var nthSuperUglyNumber = function (n, primes) {
   let element = array[0];
   let counter = 1;
   let aLength = array.length;
-  let newArray = [1];
+  let flag = array[0] === 2 ? true : false;
 
   while (true) {
-    if (isUgly(element, array, aLength, newArray) === true) {
+    if (flag === false && element % 2 === 0) {
+      element++;
+    }
+
+    if (isUgly(element, array, aLength) === true) {
       logger("found", element);
       counter++;
-    //   newArray.push(element);
     }
 
     if (counter >= n) {
@@ -33,7 +36,7 @@ var nthSuperUglyNumber = function (n, primes) {
   return result;
 };
 
-const isUgly = (target, array, nLength, newArray) => {
+const isUgly = (target, array, nLength) => {
   let tmp = target;
   let i = 0;
 
@@ -49,14 +52,10 @@ const isUgly = (target, array, nLength, newArray) => {
       if (tmp === 1) {
         return true;
       }
-    //   if (newArray.includes(tmp)) {
-    //     return true;
-    //   }
     }
   }
 
   return false;
-  //   return tmp === 1 ? true : false;
 };
 
 // nthSuperUglyNumber(12, [2, 7, 13, 19]);
