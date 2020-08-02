@@ -13,5 +13,8 @@
   "devDependencies": {
     "@types/jest": "^26.0.5",
     "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^4.1.1"
   }
 }
