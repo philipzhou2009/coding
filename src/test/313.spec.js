@@ -1,4 +1,4 @@
-const nthSuperUglyNumber = require("../main/313-3");
+const nthSuperUglyNumber = require("../main/313-4");
 
 describe("313 tests", () => {
   test("case 0", () => {
@@ -11,8 +11,8 @@ describe("313 tests", () => {
     expect(actual).toEqual(32);
   });
 
-  test.only("case 2", () => {
-    const actual = nthSuperUglyNumber(100000, [
+  test("case 2", () => {
+    const actual = nthSuperUglyNumber(10000, [
       7,
       19,
       29,
@@ -45,5 +45,41 @@ describe("313 tests", () => {
       251,
     ]);
     expect(actual).toEqual(7796273);
+  });
+
+  test.only("case 3", () => {
+    const actual = nthSuperUglyNumber(100000, [
+      7,
+      19,
+      29,
+      37,
+      41,
+      47,
+      53,
+      59,
+      61,
+      79,
+      83,
+      89,
+      101,
+      103,
+      109,
+      127,
+      131,
+      137,
+      139,
+      157,
+      167,
+      179,
+      181,
+      199,
+      211,
+      229,
+      233,
+      239,
+      241,
+      251,
+    ]);
+    expect(actual).toEqual(1092889481);
   });
 });
