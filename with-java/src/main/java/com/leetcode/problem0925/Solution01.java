@@ -1,4 +1,4 @@
-package problem0925;
+package com.leetcode.problem0925;
 
 import java.util.ArrayList;
 
